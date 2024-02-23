@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbf8i10hgmh26"]
+
+[ext_resource type="FontFile" uid="uid://41a7pebpyd8e" path="res://Assets/Font/Pixel_NES.otf" id="1_sry66"]
+[ext_resource type="Texture2D" uid="uid://dglxdxwfcfa7v" path="res://Assets/Textures/Bricks/Colored/Colored_Grey_Block-64x32 - Copy.png" id="2_mtx8o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_44pdg"]
+font = ExtResource("1_sry66")
+font_size = 20
+
+[node name="HUDPanel" type="CanvasLayer"]
+
+[node name="BlackBG" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 860.0
+offset_right = 1151.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 1)
+
+[node name="Lives" type="Label" parent="BlackBG"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 327.0
+offset_right = 318.0
+offset_bottom = 377.0
+text = "Lives: 3"
+label_settings = SubResource("LabelSettings_44pdg")
+
+[node name="High Score" type="Label" parent="BlackBG"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 34.0
+offset_right = 319.0
+offset_bottom = 85.0
+text = "High Score:
+100000"
+label_settings = SubResource("LabelSettings_44pdg")
+
+[node name="Stage" type="Label" parent="BlackBG"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 610.0
+offset_right = 320.0
+offset_bottom = 660.0
+text = "Stage: 1"
+label_settings = SubResource("LabelSettings_44pdg")
+
+[node name="Score" type="Label" parent="BlackBG"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 121.0
+offset_right = 318.0
+offset_bottom = 171.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_44pdg")
+
+[node name="HUDWall" type="TextureRect" parent="."]
+offset_left = 857.0
+offset_top = -5.0
+offset_right = 925.0
+offset_bottom = 655.0
+texture = ExtResource("2_mtx8o")
+stretch_mode = 1

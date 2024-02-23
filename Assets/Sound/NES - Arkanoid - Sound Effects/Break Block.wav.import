@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dsqqgwhs3bft"
+path="res://.godot/imported/Break Block.wav-6a7026a24519ae974b89a6724385ac68.sample"
+
+[deps]
+
+source_file="res://Assets/Sound/NES - Arkanoid - Sound Effects/Break Block.wav"
+dest_files=["res://.godot/imported/Break Block.wav-6a7026a24519ae974b89a6724385ac68.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

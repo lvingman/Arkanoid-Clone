@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://3pw6lt0eaun"
+path="res://.godot/imported/Explosion.wav-a37550f24eba3f531c1a6bb611733850.sample"
+
+[deps]
+
+source_file="res://Assets/Sound/NES - Arkanoid - Sound Effects/Explosion.wav"
+dest_files=["res://.godot/imported/Explosion.wav-a37550f24eba3f531c1a6bb611733850.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
