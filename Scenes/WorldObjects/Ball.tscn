@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkj35wk8x14e1"]
 
-[ext_resource type="Script" path="res://Scripts/Ball.cs" id="1_csey3"]
+[ext_resource type="Script" path="res://Scripts/WorldObjects/Ball.cs" id="1_csey3"]
 [ext_resource type="Texture2D" uid="uid://qiifvr2meh01" path="res://Assets/Textures/Balls/Glass/Ball_Blue_Glass-24x24.png" id="1_jsttt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_28qph"]

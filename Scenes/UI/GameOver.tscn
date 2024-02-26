@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://co4cv70xtg61s"]
+
+[ext_resource type="Script" path="res://Scripts/UI/GameOver.cs" id="1_bgqo7"]
+[ext_resource type="FontFile" uid="uid://41a7pebpyd8e" path="res://Assets/Font/Pixel_NES.otf" id="1_s343x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qgho1"]
+font = ExtResource("1_s343x")
+font_size = 81
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_bgqo7")
+
+[node name="BGBlack" type="ColorRect" parent="."]
+z_index = 1
+offset_left = -1.0
+offset_right = 930.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 1)
+
+[node name="GameOver" type="Label" parent="BGBlack"]
+z_index = 1
+layout_mode = 0
+offset_left = 199.0
+offset_top = 183.0
+offset_right = 751.0
+offset_bottom = 279.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_qgho1")
+
+[node name="TryAgain" type="Button" parent="BGBlack"]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 358.0
+offset_right = 632.0
+offset_bottom = 426.0
+theme_override_fonts/font = ExtResource("1_s343x")
+theme_override_font_sizes/font_size = 46
+text = "TRY AGAIN"
+
+[node name="MainMenu" type="Button" parent="BGBlack"]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 457.0
+offset_right = 635.0
+offset_bottom = 525.0
+theme_override_fonts/font = ExtResource("1_s343x")
+theme_override_font_sizes/font_size = 23
+text = "BACK TO MAIN MENU"
+
+[connection signal="pressed" from="BGBlack/TryAgain" to="." method="OnTryAgainPressed"]
+[connection signal="pressed" from="BGBlack/MainMenu" to="." method="OnMainMenuPressed"]

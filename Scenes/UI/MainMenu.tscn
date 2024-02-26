@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://crc6680e0pal8"]
 
-[ext_resource type="Script" path="res://Scripts/MainMenu.cs" id="1_16pem"]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_16pem"]
 [ext_resource type="FontFile" uid="uid://41a7pebpyd8e" path="res://Assets/Font/Pixel_NES.otf" id="2_adlwl"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -40,3 +40,7 @@ offset_right = 599.0
 offset_bottom = 397.0
 theme_override_fonts/font = ExtResource("2_adlwl")
 text = "QUIT"
+
+[connection signal="pressed" from="Control/Play" to="." method="OnPlayPressed"]
+[connection signal="pressed" from="Control/Options" to="." method="OnOptionsPressed"]
+[connection signal="pressed" from="Control/Quit" to="." method="OnQuitPressed"]

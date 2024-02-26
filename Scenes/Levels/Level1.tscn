@@ -1,0 +1,134 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7culcwck2hch"]
+
+[ext_resource type="PackedScene" uid="uid://du06j2hihxv4c" path="res://Scenes/WorldObjects/Brick.tscn" id="1_ktw5i"]
+[ext_resource type="PackedScene" uid="uid://bqpb472xus5rk" path="res://Scenes/WorldObjects/InvisibleWall.tscn" id="2_xxjrl"]
+[ext_resource type="PackedScene" uid="uid://dmvfpfaouv68u" path="res://Scenes/WorldObjects/Paddle.tscn" id="3_iwf2o"]
+[ext_resource type="PackedScene" uid="uid://bkj35wk8x14e1" path="res://Scenes/WorldObjects/Ball.tscn" id="4_0jusf"]
+[ext_resource type="PackedScene" uid="uid://dbf8i10hgmh26" path="res://Scenes/UI/HUD.tscn" id="5_fff3d"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ugar2"]
+friction = 0.0
+bounce = 1.0
+
+[node name="Level1" type="Node2D"]
+
+[node name="Bricks" type="Node2D" parent="."]
+
+[node name="Brick9" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(216, 166)
+
+[node name="Brick10" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(278, 166)
+
+[node name="Brick11" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(340, 166)
+
+[node name="Brick12" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(402, 166)
+
+[node name="Brick13" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(464, 166)
+
+[node name="Brick14" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(526, 166)
+
+[node name="Brick17" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(650, 166)
+
+[node name="Brick18" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(712, 166)
+
+[node name="Brick19" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(588, 166)
+
+[node name="Brick20" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(154, 166)
+
+[node name="Brick21" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(216, 136)
+
+[node name="Brick22" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(278, 136)
+
+[node name="Brick23" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(340, 136)
+
+[node name="Brick24" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(402, 136)
+
+[node name="Brick25" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(464, 136)
+
+[node name="Brick26" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(526, 136)
+
+[node name="Brick27" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(650, 136)
+
+[node name="Brick28" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(712, 136)
+
+[node name="Brick29" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(588, 136)
+
+[node name="Brick30" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(154, 136)
+
+[node name="Brick31" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(216, 106)
+
+[node name="Brick32" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(278, 106)
+
+[node name="Brick33" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(340, 106)
+
+[node name="Brick34" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(402, 106)
+
+[node name="Brick35" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(464, 106)
+
+[node name="Brick36" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(526, 106)
+
+[node name="Brick37" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(650, 106)
+
+[node name="Brick38" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(712, 106)
+
+[node name="Brick39" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(588, 106)
+
+[node name="Brick40" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_ktw5i")]
+position = Vector2(154, 106)
+
+[node name="InvisibleWalls" type="Node2D" parent="."]
+
+[node name="InvisibleWall3" parent="InvisibleWalls" instance=ExtResource("2_xxjrl")]
+position = Vector2(-34, 322)
+rotation = 3.14159
+scale = Vector2(0.338522, -20.9032)
+
+[node name="InvisibleWall2" parent="InvisibleWalls" instance=ExtResource("2_xxjrl")]
+position = Vector2(890, 322)
+rotation = 3.14159
+scale = Vector2(0.338522, -24.2232)
+
+[node name="InvisibleWall" parent="InvisibleWalls" instance=ExtResource("2_xxjrl")]
+position = Vector2(591, -26)
+scale = Vector2(6.22148, 1.58323)
+
+[node name="HUDPanel" parent="." instance=ExtResource("5_fff3d")]
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Paddle" parent="Player" instance=ExtResource("3_iwf2o")]
+position = Vector2(430, 589)
+
+[node name="Ball" parent="Player" node_paths=PackedStringArray("Paddle") instance=ExtResource("4_0jusf")]
+position = Vector2(431, 529)
+physics_material_override = SubResource("PhysicsMaterial_ugar2")
+gravity_scale = 0.0
+Paddle = NodePath("../Paddle")

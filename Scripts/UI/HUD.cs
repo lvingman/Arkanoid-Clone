@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.Messaging;
 public partial class HUD : CanvasLayer, IRecipient<BallHitsBrick>, IRecipient<BallFalls>
 {
 	//ATTRIBUTES
+	private static bool hasInitialized = false;
 	private CanvasLayer GameOver { get; set; }
 	public Label PlayerScore { get; set; }
 	public Label HighScore { get; set; }
@@ -19,6 +20,35 @@ public partial class HUD : CanvasLayer, IRecipient<BallHitsBrick>, IRecipient<Ba
 		HighScore = (Label)GetNode("BGBlack/High Score");
 		Stage = (Label)GetNode("BGBlack/Stage");
 		Lives = (Label)GetNode("BGBlack/Lives");
+		
+		PlayerScore.Text = "SCORE: " + (GlobalVariables.Score);
+		Lives.Text = "LIVES: " + (GlobalVariables.Lives);
+		Stage.Text = "STAGE: " + (GlobalVariables.Stage);
+	}
+
+	public override void _Process(double delta)
+	{
+		LoadNextStage();
+	}
+
+	private void LoadNextStage()
+	{
+		if (GetTree().GetNodesInGroup("Bricks").Count == 0)
+		{
+			if (hasInitialized)
+			{
+				Console.WriteLine("STAGE CLEARED");
+				GlobalVariables.Stage++;
+				Stage.Text = "STAGE: " + (GlobalVariables.Stage);
+				hasInitialized = false;
+				GetTree().ChangeSceneToFile($"res://Scenes/Levels/Level{GlobalVariables.Stage}.tscn");
+			}
+			else
+			{
+				Console.WriteLine("HAS INITIALIZED");
+				hasInitialized = true;
+			}
+		}
 	}
 
 
@@ -63,7 +93,7 @@ public partial class HUD : CanvasLayer, IRecipient<BallHitsBrick>, IRecipient<Ba
 
 	public void GameOverScreen()
 	{
-		PackedScene gameOver = ResourceLoader.Load("res://Scenes/GameOver.tscn") as PackedScene;
+		PackedScene gameOver = ResourceLoader.Load("res://Scenes/UI/GameOver.tscn") as PackedScene;
 		GameOver = gameOver.Instantiate<CanvasLayer>();
 		AddChild(GameOver);
 	}

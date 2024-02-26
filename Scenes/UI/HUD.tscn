@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dbf8i10hgmh26"]
 
 [ext_resource type="FontFile" uid="uid://41a7pebpyd8e" path="res://Assets/Font/Pixel_NES.otf" id="1_sry66"]
-[ext_resource type="Script" path="res://Scripts/HUD.cs" id="1_thuip"]
+[ext_resource type="Script" path="res://Scripts/UI/HUD.cs" id="1_thuip"]
 [ext_resource type="Texture2D" uid="uid://dglxdxwfcfa7v" path="res://Assets/Textures/Bricks/Colored/Colored_Grey_Block-64x32 - Copy.png" id="2_mtx8o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_44pdg"]

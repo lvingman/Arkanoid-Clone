@@ -19,9 +19,22 @@ public partial class MainMenu : CanvasLayer
 		Quit = (Button)GetNode("Control/Quit");
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+
+	// SIGNALS
+	private void OnPlayPressed()
 	{
-		if (Play._Pressed())
+		Console.WriteLine("PLAY IS WORKING");
+		GetTree().ChangeSceneToFile("res://Scenes/Levels/Level1.tscn");
 	}
+
+	private void OnOptionsPressed()
+	{
+		Console.WriteLine("OPTIONS IS WORKING");
+	}
+	private void OnQuitPressed()
+	{
+		Console.WriteLine("QUIT IS WORKING");
+	}
+	
+	
 }
