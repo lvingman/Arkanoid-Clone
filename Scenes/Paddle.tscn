@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5lxxuttafug0" path="res://Assets/Textures/Paddles/Style A/Paddle_A_Blue_96x28.png" id="1_sbkv1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1vf5"]
-size = Vector2(94, 20)
+size = Vector2(94, 2.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qdxwp"]
 size = Vector2(94, 3)
@@ -14,6 +14,7 @@ motion_mode = 1
 script = ExtResource("1_34fq0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10.5)
 scale = Vector2(1, 1.2)
 shape = SubResource("RectangleShape2D_i1vf5")
 

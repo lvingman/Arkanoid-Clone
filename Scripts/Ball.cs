@@ -13,11 +13,8 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
 	
 	[Export]
 	public Paddle Paddle {get; set;}
-	private Sprite2D PaddleSprite {get;set;}
 	private bool IsBallSticky {get; set;}
-	
-	const int maxSpeed = 600;
-	const int minSpeed = 300;
+
 	private Vector2 CurrentSpeed { get; set; }
 
 	public override void _EnterTree()   //Lets to listen messages from IRecipient and the type of message emmited
@@ -39,7 +36,6 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		PaddleSprite = (Sprite2D)Paddle.GetNode("PaddleSprite");
 		BallReset();
 	}
 
@@ -62,6 +58,7 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
  	//If ball falls it resets to the paddle's position
 		if (GlobalPosition.Y > GetViewportRect().Size.Y)
 		{
+			StrongReferenceMessenger.Default.Send<BallFalls>(new(true));
 			BallReset();
 		}
 
@@ -169,14 +166,15 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
 			Vector2 futureSpeed = CheckDiagonalSpeed(LinearVelocity.Bounce(collision.GetNormal()).Rotated(angleRad));
 
 
-
-
-
 			LinearVelocity = futureSpeed * BallAcceleration;
 
 		}
 		else
 		{
+			if (collision.GetCollider() is Brick brick)
+			{
+				StrongReferenceMessenger.Default.Send<BallHitsBrick>(new(brick.GetRid()));
+			}
 			Vector2 futureSpeed = CheckDiagonalSpeed(LinearVelocity.Bounce(collision.GetNormal()));
 			LinearVelocity = futureSpeed;
 		}
@@ -191,6 +189,7 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
 		float collision =  Paddle.GlobalPosition.X + Paddle.PaddleGetWidth() - ballXAxis;
 		LinearVelocity = Vector2.Up.Rotated((collision * radianMultiplier + radianOrigin) * Mathf.Pi)*500f;
 	}
-	
-	
+
+
+
 }
