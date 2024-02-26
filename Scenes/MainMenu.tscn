@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://crc6680e0pal8"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.cs" id="1_16pem"]
+[ext_resource type="FontFile" uid="uid://41a7pebpyd8e" path="res://Assets/Font/Pixel_NES.otf" id="2_adlwl"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_16pem")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 548.0
+offset_top = 251.0
+offset_right = 599.0
+offset_bottom = 282.0
+theme_override_fonts/font = ExtResource("2_adlwl")
+text = "PLAY!"
+
+[node name="Options" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 307.0
+offset_right = 614.0
+offset_bottom = 338.0
+theme_override_fonts/font = ExtResource("2_adlwl")
+text = "OPTIONS"
+
+[node name="Quit" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 366.0
+offset_right = 599.0
+offset_bottom = 397.0
+theme_override_fonts/font = ExtResource("2_adlwl")
+text = "QUIT"
