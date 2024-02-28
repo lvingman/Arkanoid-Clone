@@ -33,7 +33,7 @@ public partial class MainMenu : CanvasLayer
 	}
 	private void OnQuitPressed()
 	{
-		Console.WriteLine("QUIT IS WORKING");
+		GetTree().Quit();
 	}
 	
 	

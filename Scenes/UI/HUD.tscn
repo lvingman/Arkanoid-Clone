@@ -14,7 +14,7 @@ script = ExtResource("1_thuip")
 [node name="BGBlack" type="ColorRect" parent="."]
 z_index = -1
 offset_left = 860.0
-offset_right = 1151.0
+offset_right = 1157.0
 offset_bottom = 650.0
 color = Color(0, 0, 0, 1)
 

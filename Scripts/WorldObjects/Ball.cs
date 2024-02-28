@@ -8,6 +8,10 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
 {
 
 	//ATTRIBUTES
+
+	public AudioStreamPlayer BrickSFX { get; set; }
+	public AudioStreamPlayer DeathSFX { get; set; }
+	
 	[Export] 
 	public float BallAcceleration { get; set; } = 1.1f;
 	
@@ -31,11 +35,11 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
     }
 
 
-
-
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		BrickSFX = (AudioStreamPlayer)GetNode("BrickSFX");
+		DeathSFX = (AudioStreamPlayer)GetNode("DeathSFX");
 		BallReset();
 	}
 
@@ -49,7 +53,6 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
 			BallBounceMath(collisionInfo, BallAcceleration);
 		}
 
-
 	}
 
 	//Changes to RigidBodies physics and positions are made here
@@ -58,6 +61,7 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
  	//If ball falls it resets to the paddle's position
 		if (GlobalPosition.Y > GetViewportRect().Size.Y)
 		{
+			DeathSFX.Play();
 			StrongReferenceMessenger.Default.Send<BallFalls>(new(true));
 			BallReset();
 		}
@@ -157,6 +161,7 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
 	{
 		if (collision.GetCollider() is Paddle paddle)
 		{
+			
 			float distance = Paddle.GlobalPosition.X - GlobalPosition.X;
 			float paddleWidth = +Paddle.PaddleGetWidth();
 			float relation = distance / paddleWidth;
@@ -164,15 +169,16 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
 			float angleRad = -Mathf.DegToRad(angle);
 
 			Vector2 futureSpeed = CheckDiagonalSpeed(LinearVelocity.Bounce(collision.GetNormal()).Rotated(angleRad));
-
-
+			
 			LinearVelocity = futureSpeed * BallAcceleration;
-
+			Paddle.PaddlePlaySFX();
+			
 		}
 		else
 		{
 			if (collision.GetCollider() is Brick brick)
 			{
+				BrickSFX.Play();
 				StrongReferenceMessenger.Default.Send<BallHitsBrick>(new(brick.GetRid()));
 			}
 			Vector2 futureSpeed = CheckDiagonalSpeed(LinearVelocity.Bounce(collision.GetNormal()));

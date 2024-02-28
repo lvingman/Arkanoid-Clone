@@ -15,6 +15,8 @@ public partial class Paddle : CharacterBody2D
 // ### ATTRIBUTES ###
 // ##################
 
+	public  AudioStreamPlayer PaddleSFX { get; set; }
+	
 	public const float Speed = 800.0f;	
 	private Area2D PaddleAttachable {get; set;}
 	private float paddleWidth { get; set; }
@@ -42,17 +44,27 @@ public partial class Paddle : CharacterBody2D
 		paddleWidth = PaddleAttachableAreaBox.End.X - PaddleAttachableAreaBox.Position.X;
 		return paddleWidth;
 	}
+
+	public void PaddlePlaySFX()
+	{
+		PaddleSFX.Play();
+	}
 	
 	public override void _Ready()
 	{
 		PaddleAttachable = (Area2D)GetNode("PaddleAttachable");
 		paddleWidth = PaddleGetWidth();
+		PaddleSFX = (AudioStreamPlayer)GetNode("SFX");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		PaddleMovement(delta);
 		PaddleBallSticks();
+		if (GlobalVariables.Lives == 0)
+		{
+			QueueFree();
+		}
 	}
 
 /// <summary>

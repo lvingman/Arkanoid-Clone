@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmvfpfaouv68u"]
+[gd_scene load_steps=6 format=3 uid="uid://dmvfpfaouv68u"]
 
 [ext_resource type="Script" path="res://Scripts/WorldObjects/Paddle.cs" id="1_34fq0"]
 [ext_resource type="Texture2D" uid="uid://b5lxxuttafug0" path="res://Assets/Textures/Paddles/Style A/Paddle_A_Blue_96x28.png" id="1_sbkv1"]
+[ext_resource type="AudioStream" uid="uid://bxyi8wodfbeaf" path="res://Assets/Sound/NES - Arkanoid - Sound Effects/Bounce Pad.wav" id="3_oc7wm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1vf5"]
 size = Vector2(94, 2.5)
@@ -28,3 +29,6 @@ texture = ExtResource("1_sbkv1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PaddleAttachable"]
 position = Vector2(0, -13.5)
 shape = SubResource("RectangleShape2D_qdxwp")
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_oc7wm")

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkj35wk8x14e1"]
+[gd_scene load_steps=6 format=3 uid="uid://bkj35wk8x14e1"]
 
 [ext_resource type="Script" path="res://Scripts/WorldObjects/Ball.cs" id="1_csey3"]
 [ext_resource type="Texture2D" uid="uid://qiifvr2meh01" path="res://Assets/Textures/Balls/Glass/Ball_Blue_Glass-24x24.png" id="1_jsttt"]
+[ext_resource type="AudioStream" uid="uid://dsqqgwhs3bft" path="res://Assets/Sound/NES - Arkanoid - Sound Effects/Break Block.wav" id="3_ji07t"]
+[ext_resource type="AudioStream" uid="uid://fj76mo0cdd3f" path="res://Assets/Sound/NES - Arkanoid - Sound Effects/Death.wav" id="4_pq3ux"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_28qph"]
 
@@ -19,3 +21,9 @@ texture = ExtResource("1_jsttt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_28qph")
+
+[node name="BrickSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ji07t")
+
+[node name="DeathSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_pq3ux")
