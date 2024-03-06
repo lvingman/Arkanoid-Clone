@@ -63,3 +63,10 @@ offset_right = 925.0
 offset_bottom = 655.0
 texture = ExtResource("2_mtx8o")
 stretch_mode = 1
+
+[node name="HUDTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="HUDTimer" to="." method="OnHudTimerTimeout"]

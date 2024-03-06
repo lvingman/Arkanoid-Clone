@@ -17,7 +17,7 @@ public partial class Paddle : CharacterBody2D
 
 	public  AudioStreamPlayer PaddleSFX { get; set; }
 	
-	public const float Speed = 800.0f;	
+	[Export]
 	private Area2D PaddleAttachable {get; set;}
 	private float paddleWidth { get; set; }
 
@@ -97,15 +97,15 @@ public partial class Paddle : CharacterBody2D
 		Vector2 direction = Input.GetVector("Left", "Right", "Up", "Down");
 		if (direction != Vector2.Zero)
 		{
-			velocity.X = direction.X * Speed;
+			velocity.X = direction.X * GlobalVariables.Movement;
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, GlobalVariables.Movement);
 		}
 
 		var collision = MoveAndCollide(velocity* (float)delta);
-	
+
 	}
 
 

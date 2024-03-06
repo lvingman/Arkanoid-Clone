@@ -20,10 +20,12 @@ public partial class Brick : StaticBody2D, IRecipient<BallHitsBrick>
 		{
 			SetSprite(BrickSprite);
 		}
+		AddToGroup("Bricks");
 	}
 
 	private void SetSprite(Texture2D sprite)
 	{
+
 		((Sprite2D)GetNode("Sprite2D")).Texture = sprite;
 	}
 
@@ -61,7 +63,7 @@ public partial class Brick : StaticBody2D, IRecipient<BallHitsBrick>
 	
 	
 	//Receives the call when the ball hits a brick
-	public void Receive(BallHitsBrick brickId)
+	public virtual void Receive(BallHitsBrick brickId)
 	{
 		if (brickId.brickId == GetRid())
 		{

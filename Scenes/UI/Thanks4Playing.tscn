@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://8j5r78sxxkjr"]
+
+[ext_resource type="FontFile" uid="uid://41a7pebpyd8e" path="res://Assets/Font/Pixel_NES.otf" id="1_cjm51"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rcy3c"]
+font = ExtResource("1_cjm51")
+font_size = 81
+
+[node name="Thanks4Playing" type="CanvasLayer"]
+
+[node name="BGBlack" type="ColorRect" parent="."]
+z_index = 1
+offset_left = -1.0
+offset_right = 930.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="BGBlack"]
+z_index = 1
+layout_mode = 0
+offset_left = 162.0
+offset_top = 144.0
+offset_right = 777.0
+offset_bottom = 339.0
+text = "THANKS FOR
+PLAYING!"
+label_settings = SubResource("LabelSettings_rcy3c")
+horizontal_alignment = 1
+
+[node name="MainMenu" type="Button" parent="BGBlack"]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 457.0
+offset_right = 635.0
+offset_bottom = 525.0
+theme_override_fonts/font = ExtResource("1_cjm51")
+theme_override_font_sizes/font_size = 23
+text = "BACK TO MAIN MENU"

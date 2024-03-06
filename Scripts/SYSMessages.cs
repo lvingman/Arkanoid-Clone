@@ -7,3 +7,6 @@ public record BallHitsBrick(Rid brickId);
 
 //Messages for ball-ui interaction
 public record BallFalls(bool value);
+
+//Message for level ended
+public record LevelEnds(bool value);

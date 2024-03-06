@@ -4,13 +4,15 @@ using System;
 
 namespace ArkanoidClone.Game;
 
-public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
+public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>, IRecipient<LevelEnds>
 {
 
 	//ATTRIBUTES
 
+	public Timer BallTimer { get; set; }
 	public AudioStreamPlayer BrickSFX { get; set; }
 	public AudioStreamPlayer DeathSFX { get; set; }
+	public AudioStreamPlayer MetalBrickSFX{get; set;}
 	
 	[Export] 
 	public float BallAcceleration { get; set; } = 1.1f;
@@ -40,6 +42,8 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
 	{
 		BrickSFX = (AudioStreamPlayer)GetNode("BrickSFX");
 		DeathSFX = (AudioStreamPlayer)GetNode("DeathSFX");
+		MetalBrickSFX = (AudioStreamPlayer)GetNode("MetalBrickSFX");
+		BallTimer = (Timer)GetNode("BallTimer");
 		BallReset();
 	}
 
@@ -55,15 +59,28 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
 
 	}
 
+	private void OnBallTimerTimeout()
+	{
+		if (GlobalVariables.Lives > 0)
+		{
+			BallReset();
+		}
+		else
+		{
+			QueueFree();
+		}
+	}
+	
 	//Changes to RigidBodies physics and positions are made here
     public override void _IntegrateForces(PhysicsDirectBodyState2D state)
     {
  	//If ball falls it resets to the paddle's position
-		if (GlobalPosition.Y > GetViewportRect().Size.Y)
+		if (GlobalPosition.Y > GetViewportRect().Size.Y && BallTimer.IsStopped())
 		{
 			DeathSFX.Play();
+			BallTimer.Start();
 			StrongReferenceMessenger.Default.Send<BallFalls>(new(true));
-			BallReset();
+			
 		}
 
 		//Checks for sticky ball
@@ -80,6 +97,9 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
 		}
 		
     }
+    
+    
+    
 
 /// <summary>
 /// Checks if the ball is sticky in order to manipulate the ball with the paddle
@@ -93,7 +113,7 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
 		Vector2 direction = Input.GetVector("Left", "Right", "Up", "Down");
 		if (direction != Vector2.Zero)
 		{
-			LinearVelocity=  new Vector2(direction.X * 800.0f, 0) ;
+			LinearVelocity=  new Vector2(direction.X * GlobalVariables.Movement, 0) ;
 		}
 			
 
@@ -124,12 +144,6 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
 
     }
 
-	/// <summary>
-	/// Pushes the ball in a (preferably) random direction.
-	/// </summary>
-	private void BallImpulse(){
-
-	}
 
 
 	public void Receive(BallEntersStickyArea message)
@@ -176,7 +190,18 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
 		}
 		else
 		{
-			if (collision.GetCollider() is Brick brick)
+			if(collision.GetCollider() is MetalBrick metalBrick)
+			{
+				if (metalBrick.brickHealth > 1)
+				{
+					MetalBrickSFX.Play();
+				}
+				else{
+					BrickSFX.Play();
+				}
+				StrongReferenceMessenger.Default.Send<BallHitsBrick>(new(metalBrick.GetRid()));
+			}
+			else if(collision.GetCollider() is Brick brick)
 			{
 				BrickSFX.Play();
 				StrongReferenceMessenger.Default.Send<BallHitsBrick>(new(brick.GetRid()));
@@ -197,5 +222,11 @@ public partial class Ball : RigidBody2D, IRecipient<BallEntersStickyArea>
 	}
 
 
-
+	public void Receive(LevelEnds message)
+	{
+		if (message.value)
+		{
+			LinearVelocity = new Vector2(0, 0);
+		}
+	}
 }

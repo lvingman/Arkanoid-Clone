@@ -5,7 +5,9 @@ using CommunityToolkit.Mvvm.Messaging;
 public partial class HUD : CanvasLayer, IRecipient<BallHitsBrick>, IRecipient<BallFalls>
 {
 	//ATTRIBUTES
-	private static bool hasInitialized = false;
+	public Timer HudTimer { get; set; }
+
+	private static bool stageCleared = false;
 	private CanvasLayer GameOver { get; set; }
 	public Label PlayerScore { get; set; }
 	public Label HighScore { get; set; }
@@ -20,10 +22,12 @@ public partial class HUD : CanvasLayer, IRecipient<BallHitsBrick>, IRecipient<Ba
 		HighScore = (Label)GetNode("BGBlack/High Score");
 		Stage = (Label)GetNode("BGBlack/Stage");
 		Lives = (Label)GetNode("BGBlack/Lives");
+		HudTimer = (Timer)GetNode("HUDTimer");
 		
 		PlayerScore.Text = "SCORE: " + (GlobalVariables.Score);
 		Lives.Text = "LIVES: " + (GlobalVariables.Lives);
 		Stage.Text = "STAGE: " + (GlobalVariables.Stage);
+		stageCleared = false;
 	}
 
 	public override void _Process(double delta)
@@ -31,22 +35,27 @@ public partial class HUD : CanvasLayer, IRecipient<BallHitsBrick>, IRecipient<Ba
 		LoadNextStage();
 	}
 
+	private void OnHudTimerTimeout()
+	{
+		Console.WriteLine("Timer running");
+		GlobalVariables.Stage++;
+		if (GlobalVariables.Stage > 3)
+		{
+			Thanks4Playing();
+		}
+		Stage.Text = "STAGE: " + (GlobalVariables.Stage);
+		GetTree().ChangeSceneToFile($"res://Scenes/Levels/Level{GlobalVariables.Stage}.tscn");
+	}
 	private void LoadNextStage()
 	{
-		if (GetTree().GetNodesInGroup("Bricks").Count == 0)
+		if (stageCleared == false)
 		{
-			if (hasInitialized)
+			if (GetTree().GetNodesInGroup("Bricks").Count == 0)
 			{
 				Console.WriteLine("STAGE CLEARED");
-				GlobalVariables.Stage++;
-				Stage.Text = "STAGE: " + (GlobalVariables.Stage);
-				hasInitialized = false;
-				GetTree().ChangeSceneToFile($"res://Scenes/Levels/Level{GlobalVariables.Stage}.tscn");
-			}
-			else
-			{
-				Console.WriteLine("HAS INITIALIZED");
-				hasInitialized = true;
+				HudTimer.Start();
+				StrongReferenceMessenger.Default.Send<LevelEnds>(new(true));
+				stageCleared = true;
 			}
 		}
 	}
@@ -97,4 +106,12 @@ public partial class HUD : CanvasLayer, IRecipient<BallHitsBrick>, IRecipient<Ba
 		GameOver = gameOver.Instantiate<CanvasLayer>();
 		AddChild(GameOver);
 	}
+
+	public void Thanks4Playing()
+	{
+		PackedScene thanks4Playing = ResourceLoader.Load("res://Scenes/UI/Thanks4Playing.tscn") as PackedScene;
+		AddChild(thanks4Playing.Instantiate<CanvasLayer>());
+		
+	}
+	
 }

@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1xqs16iafg2q"]
+
+[ext_resource type="PackedScene" uid="uid://du06j2hihxv4c" path="res://Scenes/WorldObjects/Brick.tscn" id="1_sc4b5"]
+[ext_resource type="Texture2D" uid="uid://1vy35ggo67qe" path="res://Assets/Textures/Bricks/Colored/Bump Small.png" id="2_8xrgr"]
+[ext_resource type="Script" path="res://Scripts/WorldObjects/MetalBrick.cs" id="2_kttme"]
+[ext_resource type="AudioStream" uid="uid://dxbq63tq8s5bg" path="res://Assets/Sound/NES - Arkanoid - Sound Effects/Metal Block.wav" id="4_r0vvp"]
+
+[node name="MetalBrick" instance=ExtResource("1_sc4b5")]
+script = ExtResource("2_kttme")
+BrickSprite = null
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_8xrgr")
+
+[node name="MetalBrickSFX" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource("4_r0vvp")

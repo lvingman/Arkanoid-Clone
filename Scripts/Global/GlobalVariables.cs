@@ -3,7 +3,7 @@ using System;
 
 public partial class GlobalVariables : Node
 {
-
+	public static float Movement = 800.0f;
 	public static int Lives = 3;
 	public static int Score = 0;
 	public static int Stage = 1;

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ejk5bjuu34ia" path="res://Assets/Textures/Bricks/Colored/Colored_Red-64x32.png" id="2_ikk2h"]
 [ext_resource type="PackedScene" uid="uid://dbf8i10hgmh26" path="res://Scenes/UI/HUD.tscn" id="3_hqqcm"]
 [ext_resource type="Texture2D" uid="uid://diswjawqivva7" path="res://Assets/Textures/Bricks/Colored/Colored_Yellow-64x32.png" id="3_l0wv8"]
-[ext_resource type="Texture2D" uid="uid://bq3sabn2ynruj" path="res://Assets/Textures/Bricks/Colored/Colored_Blue-64x32.png" id="4_l8k4n"]
+[ext_resource type="PackedScene" uid="uid://d1xqs16iafg2q" path="res://Scenes/WorldObjects/MetalBrick.tscn" id="4_0huqv"]
 [ext_resource type="PackedScene" uid="uid://dmvfpfaouv68u" path="res://Scenes/WorldObjects/Paddle.tscn" id="4_yeaxw"]
 [ext_resource type="PackedScene" uid="uid://bkj35wk8x14e1" path="res://Scenes/WorldObjects/Ball.tscn" id="5_v4puq"]
 [ext_resource type="Texture2D" uid="uid://3fendlgmunt" path="res://Assets/Textures/Backgrounds/bg3.png" id="9_p8wsu"]
@@ -108,63 +108,45 @@ BrickSprite = ExtResource("2_ikk2h")
 
 [node name="Brick87" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(119, 203)
-BrickSprite = ExtResource("4_l8k4n")
 
 [node name="Brick91" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(119, 173)
-BrickSprite = ExtResource("4_l8k4n")
-
-[node name="Brick100" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
-position = Vector2(119, 173)
-BrickSprite = ExtResource("4_l8k4n")
 
 [node name="Brick88" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(181, 203)
-BrickSprite = ExtResource("4_l8k4n")
 
 [node name="Brick89" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(243, 203)
-BrickSprite = ExtResource("4_l8k4n")
 
 [node name="Brick92" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(181, 233)
-BrickSprite = ExtResource("4_l8k4n")
 
 [node name="Brick93" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(243, 233)
-BrickSprite = ExtResource("4_l8k4n")
 
 [node name="Brick90" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(305, 203)
-BrickSprite = ExtResource("4_l8k4n")
 
 [node name="Brick94" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(553, 203)
-BrickSprite = ExtResource("4_l8k4n")
 
 [node name="Brick95" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(615, 203)
-BrickSprite = ExtResource("4_l8k4n")
 
 [node name="Brick96" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(677, 203)
-BrickSprite = ExtResource("4_l8k4n")
 
 [node name="Brick97" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(615, 233)
-BrickSprite = ExtResource("4_l8k4n")
 
 [node name="Brick98" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(677, 233)
-BrickSprite = ExtResource("4_l8k4n")
 
 [node name="Brick99" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(739, 203)
-BrickSprite = ExtResource("4_l8k4n")
 
 [node name="Brick101" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(739, 173)
-BrickSprite = ExtResource("4_l8k4n")
 
 [node name="Brick80" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(367, 203)
@@ -205,6 +187,35 @@ BrickSprite = ExtResource("2_ikk2h")
 [node name="Brick70" parent="Bricks" groups=["Bricks"] instance=ExtResource("1_8xm66")]
 position = Vector2(677, 143)
 BrickSprite = ExtResource("2_ikk2h")
+
+[node name="MetalBricks" type="Node2D" parent="."]
+
+[node name="MetalBrick" parent="MetalBricks" instance=ExtResource("4_0huqv")]
+position = Vector2(367, 323)
+
+[node name="MetalBrick3" parent="MetalBricks" instance=ExtResource("4_0huqv")]
+position = Vector2(491, 323)
+
+[node name="MetalBrick2" parent="MetalBricks" instance=ExtResource("4_0huqv")]
+position = Vector2(429, 323)
+
+[node name="MetalBrick4" parent="MetalBricks" instance=ExtResource("4_0huqv")]
+position = Vector2(181, 323)
+
+[node name="MetalBrick5" parent="MetalBricks" instance=ExtResource("4_0huqv")]
+position = Vector2(305, 323)
+
+[node name="MetalBrick6" parent="MetalBricks" instance=ExtResource("4_0huqv")]
+position = Vector2(243, 323)
+
+[node name="MetalBrick7" parent="MetalBricks" instance=ExtResource("4_0huqv")]
+position = Vector2(553, 323)
+
+[node name="MetalBrick8" parent="MetalBricks" instance=ExtResource("4_0huqv")]
+position = Vector2(677, 323)
+
+[node name="MetalBrick9" parent="MetalBricks" instance=ExtResource("4_0huqv")]
+position = Vector2(615, 323)
 
 [node name="InvisibleWalls" type="Node2D" parent="."]
 
